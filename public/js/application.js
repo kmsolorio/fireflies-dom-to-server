@@ -1,3 +1,15 @@
+function addDie(data) {
+    // defining a function
+    function dieTemplate(die) {
+        return "<img src='" + die.roll + ".png' >"
+    }
+    console.log(dieTemplate(data));
+    console.log(data);
+
+    $('#die').html(dieTemplate(data));
+}
+
+
 $(document).ready(function () {
 
     $('form').submit(function(event){
@@ -5,10 +17,7 @@ $(document).ready(function () {
         var url = $(this).attr('action');
         var data = { value : Math.floor(Math.random() * 6 + 1) };
 
-        $.post(url, data, function(response){
-            console.log(response);
-            $('#die').html(response);
-        });
+        $.post(url, data, addDie, "json");
     });
 
   // PSEUDO-CODE:
