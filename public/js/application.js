@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    $('form').submit(function(event){
+        event.preventDefault();
+        var url = $(this).attr('action');
+        var data = { value : Math.floor(Math.random() * 6 + 1) };
+
+        $.post(url, data, function(response){
+            console.log(response);
+            $('#die').html(response);
+        });
+    });
+
   // PSEUDO-CODE:
   //   1- intercept the form submission event using jQuery
   //   2- prevent the default action for that event from happening
