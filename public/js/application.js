@@ -3,7 +3,9 @@ $(document).ready(function () {
     $('form').submit(function(event){
         event.preventDefault();
         var url = $(this).attr('action');
-        var data = { value : Math.floor(Math.random() * 6 + 1) };
+        var data = { value : value };
+        console.log(value);
+        console.log(data);
 
         $.post(url, data, function(response){
             console.log(response);
